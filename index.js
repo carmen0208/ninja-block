@@ -1,0 +1,11 @@
+const Block = require('./block')
+const BlockChain = require('./blockChain')
+// let ninjaBlock = new Block({amount:100})
+// let ninjaBlock2 = new Block({amount: 500}, ninjaBlock.hash)
+// console.log(ninjaBlock)
+// console.log(ninjaBlock2)
+
+let ninjaBlockChain = new BlockChain()
+ninjaBlockChain.addBlock(new Block({amount:100}))
+ninjaBlockChain.addBlock(new Block({amount:200}))
+console.log(ninjaBlockChain)
