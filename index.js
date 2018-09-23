@@ -9,13 +9,8 @@ let ninjaBlockChain = new BlockChain()
 ninjaBlockChain.addBlock(new Block({amount:100}))
 ninjaBlockChain.addBlock(new Block({amount:200}))
 console.log(ninjaBlockChain)
-// console.log(JSON.stringify(ninjaBlockChain))
-// ninjaBlockChain.chain.forEach(element => {
-//   console.log(element.data)
-// });
 console.log(`if blockchain is still valid: ${ninjaBlockChain.inChainValid()}`)
 
 console.log('Warning: Blockchain has been changed')
-
 ninjaBlockChain.chain[1].data ={amout:500}
 console.log(`if blockchain is still valid: ${ninjaBlockChain.inChainValid()}`)
