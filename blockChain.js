@@ -1,9 +1,12 @@
 const Block = require('./block')
+const Transaction = require('./transaction')
 
 class BlockChain {
   constructor() {
     this.chain = [this.createInitialBlock()]
-    this.difficult = 4
+    this.difficult = 3
+    this.penddingTransaction = []
+    this.miningReward = 50
   }
 
   createInitialBlock() {
@@ -35,6 +38,34 @@ class BlockChain {
       }
     }
     return true
+  }
+  miningTransaction(minerAddress) {
+    this.penddingTransaction.push(new Transaction(null, minerAddress, this.miningReward))
+
+    let transBlock = new Block(this.penddingTransaction,this.chain.length, this.getLastBlock().hash)
+    transBlock.mineBlock(this.difficult)
+
+    console.log('Block successfully mined!');
+    this.chain.push(transBlock)
+    this.penddingTransaction = []
+  }
+
+  getBalanceFromAddress(address) {
+    let balance = 0
+    for(const block of this.chain) {
+      for(const transaction of block.data) {
+        if(transaction.fromAddress === address ){
+          balance -=transaction.amount
+        } else if(transaction.toAddress === address) {
+          balance += transaction.amount
+        }
+      }
+    }
+    return balance
+  }
+
+  createTransaction(transaction) {
+    this.penddingTransaction.push(transaction)
   }
 }
 
