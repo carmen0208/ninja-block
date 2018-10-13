@@ -1,16 +1,18 @@
-const express = require('express')
+const express = require("express");
 
-class WebServer  {
+class WebServer {
   constructor() {
-    this.app = express()
-    this.app.get('/', (req, res) => {
-      res.send('Hello World')
-    })
+    this.app = express();
+    this.app.get("/", (req, res) => {
+      res.send("Hello World");
+    });
   }
 
   listen(port) {
-    this.app.listen(port, ()=> console.log(`Start BlockChain WebServer with port: ${port} !`))
+    this.app.listen(port, () =>
+      console.log(`Start BlockChain WebServer with port: ${port} !`)
+    );
   }
 }
 
-module.exports = WebServer
+module.exports = WebServer;
