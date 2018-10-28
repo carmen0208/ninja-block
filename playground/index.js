@@ -27,3 +27,6 @@ console.log(ninjaBlockChain.getBalanceFromAddress("miner-reward-address"));
 console.log("-------------- mining again -------------------");
 ninjaBlockChain.miningTransaction("miner-reward-address");
 console.log(ninjaBlockChain.getBalanceFromAddress("miner-reward-address"));
+
+const Wallet = require('../lib/operator/wallet')
+console.log(new Wallet('Carmen'))
