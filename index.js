@@ -1,4 +1,4 @@
-const WebServer = require("./webserver");
+const WebServer = require('./webserver')
 
-webServer = new WebServer();
-webServer.listen("3000");
+const webServer = new WebServer()
+webServer.listen('3000')

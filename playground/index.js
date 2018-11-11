@@ -1,6 +1,6 @@
 // const Block = require('../lib/blockchain/block')
 const BlockChain = require('../lib/blockchain/blockChain')
-const Transaction = require('../lib/blockchain/transaction')
+// const Transaction = require('../lib/blockchain/transaction')
 // let ninjaBlock = new Block({amount:100})
 // let ninjaBlock2 = new Block({amount: 500}, ninjaBlock.hash)
 // console.log(ninjaBlock)
@@ -33,15 +33,16 @@ const Transaction = require('../lib/blockchain/transaction')
 // console.log(wallet)
 // wallet.generateAddress()
 // wallet.generateAddress()
-
+const name = 'ninja'
+const blockchain = new BlockChain(name)
 const Operator = require('../lib/operator/index')
 
-const operator = new Operator()
+const operator = new Operator(name, blockchain)
 const wallet = operator.createWalletFromPassword('carmen')
 // console.log(wallet)
 
-const fromAddressId = wallet.generateAddress()
-const toAddressId = wallet.generateAddress()
+const fromAddressId = operator.generateAddressForWallet(wallet.id) // wallet.generateAddress()
+const toAddressId = operator.generateAddressForWallet(wallet.id)
 const fromAddress = wallet.getAddressByPublicKey(fromAddressId)
 // console.log(wallet)
 // console.log(fromAddress)
